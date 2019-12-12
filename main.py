@@ -1,1 +1,7 @@
-# bruh commencing momentarily, please wait 24 hours.
+########################################
+#            DexieTheSheep             #
+#  https://github.com/Lamby777/SlurPy  #
+########################################
+
+with open("code.jc") as f:
+	pass
