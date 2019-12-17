@@ -15,7 +15,7 @@ def cls():
     else: 
         cmd('clear')
 
-def token(code):
+def tokenize(code):
 	pass
 
 def lexer(code):
