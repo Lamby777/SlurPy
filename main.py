@@ -24,4 +24,4 @@ def interpret(code):
 
 # Execute Code
 with open("code.jc") as f:
-    pass
+    interpret(f.read())
