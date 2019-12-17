@@ -9,19 +9,19 @@ import os.system as cmd, os.name as OSName
 
 # Functions
 
-def cls(): 
-    if OSName == 'nt': 
+def cls():
+    if OSName == 'nt':
         cmd('cls')
-    else: 
+    else:
         cmd('clear')
 
 def tokenize(code):
-	pass
+    pass
 
-def lexer(code):
-	return tokenize(code)
-	# will improve code
+def interpret(code):
+    return tokenize(code)
+    # will improve code
 
 # Execute Code
 with open("code.jc") as f:
-	pass
+    pass
