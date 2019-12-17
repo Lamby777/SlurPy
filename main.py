@@ -4,9 +4,8 @@
 ########################################
 
 # Imports
-from termcolor import colored;
+from termcolor import colored
 import os.system as cmd, os.name as OSName
-#import a, b, c as d
 
 # Functions
 
