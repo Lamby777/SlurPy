@@ -15,6 +15,13 @@ def cls():
     else: 
         cmd('clear')
 
+def token(code):
+	pass
+
+def lexer(code):
+	return tokenize(code)
+	# will improve code
+
 # Execute Code
 with open("code.jc") as f:
 	pass
