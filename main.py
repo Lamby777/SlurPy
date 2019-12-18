@@ -5,18 +5,29 @@
 
 # Imports
 from termcolor import colored
-import os.system as cmd, os.name as OSName
+from inspect import signature
+from os import system as cmd
+from os import name as OS
+
+# Constants
+ops = [
+	[]
+]
 
 # Functions
 
+def params(fn):
+	return len(signature(fn).parameters)
+
 def cls():
-	if OSName == 'nt':
+	if OS == 'nt':
 		cmd('cls')
 	else:
 		cmd('clear')
 
 def tokenize(code):
-	pass
+	tokens = []
+	return tokens
 
 def interpret(code):
 	return tokenize(code)
