@@ -20,7 +20,9 @@ def tokenize(code):
 
 def interpret(code):
 	return tokenize(code)
-	# will improve code
+
+def out(msg, color):
+	print(colored(msg, color))
 
 # Execute Code
 with open("code.jc") as f:
