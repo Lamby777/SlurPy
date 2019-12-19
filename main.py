@@ -6,13 +6,14 @@
 # Imports
 from termcolor import colored
 from inspect import signature
-from os import system as cmd
-from os import name as OS
+from os import system as cmd, name as OS
 
 # Constants
 ops = [
 	[]
 ]
+
+keywords = [i[0] for i in ops]
 
 # Functions
 
