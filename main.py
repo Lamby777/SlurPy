@@ -25,8 +25,14 @@ class MetaException(Exception):
 	def __init__(self, name):
 		self.name = name
 
+
+class SlurpCodeException(Exception):
+	def __init__(self, name):
+		self.name = name
+
 oofs = {
-	"InvalidCmd": MetaException("Invalid Command!")
+	"InvalidCmd": MetaException("Invalid Command!"),
+	"bruh": SlurpCodeException("Invalid syntax"),
 }
 
 # Functions
@@ -55,10 +61,10 @@ while True:
 	mode = input().lower().strip()
 	if mode == "s":
 		while True:
-			print("> ")
+			print("> ", end="")
 			shellJuice = input()
 			if not shellJuice in keywords:
-				raise oofs.InvalidCmd
+				raise oofs["InvalidCmd"]
 	elif mode == "r":
 		# Execute Code
 		with open("code.jc") as f:
