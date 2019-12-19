@@ -55,6 +55,7 @@ while True:
 	mode = input().lower().strip()
 	if mode == "s":
 		while True:
+			print("> ")
 			shellJuice = input()
 			if not shellJuice in keywords:
 				raise oofs.InvalidCmd
