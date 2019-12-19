@@ -5,9 +5,8 @@
 
 # Imports
 from termcolor import colored
-from inspect import signature
-from os import system as cmd, name as OS
-import math
+from error import oof
+import fn, math
 
 # Constants
 ops = [
@@ -18,55 +17,21 @@ ops = [
 	["pw", lambda x, y: x**y],
 	["sq", lambda x: math.sqrt(x)],
 ]
-
 keywords = [i[0] for i in ops]
 
-class MetaException(Exception):
-	def __init__(self, name):
-		self.name = name
-
-
-class SlurpCodeException(Exception):
-	def __init__(self, name):
-		self.name = name
-
-oofs = {
-	"InvalidCmd": MetaException("Invalid Command!"),
-	"bruh": SlurpCodeException("Invalid syntax"),
-}
-
-# Functions
-
-def params(fn):
-	return len(signature(fn).parameters)
-
-def cls():
-	if OS == 'nt':
-		cmd('cls')
-	else:
-		cmd('clear')
-
-def tokenize(code):
-	tokens = []
-	return tokens
-
-def interpret(code):
-	return tokenize(code)
-
-def out(msg, color):
-	print(colored(msg, color))
+cmds = [
+	["echo", lambda x: print(x)],
+	["clear", fn.cls],
+	["script", fn.runJuice],
+]
+cmdk = [i[0] for i in cmds]
 
 while True:
-	print("Type S for shell or R to run code.jc")
-	mode = input().lower().strip()
-	if mode == "s":
+	print(colored("Welcome to SlurpTerminal"))
+	cmd = input().lower().strip()
+	if cmd in cmdk:
 		while True:
 			print("> ", end="")
 			shellJuice = input()
 			if not shellJuice in keywords:
-				raise oofs["InvalidCmd"]
-	elif mode == "r":
-		# Execute Code
-		with open("code.jc") as f:
-			code = f.read()
-			interpret(code)
+				raise oof["InvalidCmd"]
