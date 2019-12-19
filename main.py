@@ -35,5 +35,3 @@ while True:
 		fn.out("Invalid Command! Use \"help\"", "red")
 	else:
 		cmdargs = " ".join(cmdfull[1:])
-	else:
-		cmds[cmd]
