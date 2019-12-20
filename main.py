@@ -17,7 +17,7 @@ class SlurpMathError(SlurpException): pass
 
 # Constants
 
-comment = "<!>"
+comment = "(i)"
 comtlen = len(comment)-1
 
 ops = {
@@ -60,7 +60,9 @@ def tokenize(code):
 	split = code.splitlines()
 	# Removes Comments
 	for i in range(len(split)-1):
-		if split[i][0:comtlen]: del split[i]
+		if comment in i:
+			if split[i][0:comtlen]: del split[i]
+			else: split[i] = split[i].find()
 	return tokens
 
 def interpret(code):
