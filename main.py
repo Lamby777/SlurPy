@@ -17,6 +17,9 @@ class SlurpMathError(SlurpException): pass
 
 # Constants
 
+comment = "<!>"
+comtlen = len(comment)-1
+
 ops = {
 	"ps": lambda x, y: x+y,
 	"sb": lambda x, y: x-y,
@@ -49,17 +52,20 @@ def runJuice(x="code.jc"):
 		finally:
 			print(colored("Your will now execute. "
 			"In the future, please\nadd the .jc "
-			"to the end of the file name.","cyan"))
+			"to the end of the file name.", "cyan"))
 		
 
 def tokenize(code):
 	tokens = []
-
+	split = code.splitlines()
+	# Removes Comments
+	for i in range(len(split)-1):
+		if split[i][0:comtlen]: del split[i]
 	return tokens
 
 def interpret(code):
 	for x in tokenize(code):
-		pass
+		print(x)
 
 def startRepl():
 	loop = True

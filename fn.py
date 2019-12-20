@@ -13,7 +13,7 @@ def cls():
 
 def out(msg, color="white"):
 	if isinstance(msg, list):
-		print("->" + msg.pop() + [
+		print("-> " + msg.pop() + [
 			"\n^-" + line for line in msg
 		])
 	else:
