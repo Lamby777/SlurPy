@@ -43,3 +43,4 @@ while True:
 	else:
 		cmdargs = " ".join(cmdfull[1:])
 		cmds[cmd][0](cmdargs)
+#
