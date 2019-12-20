@@ -28,15 +28,17 @@ def runJuice(x="code.jc"):
 			code = f.read()
 			interpret(code)
 	except FileNotFoundError:
-		print(colored("Your will now execute. "
-		"In the future, please\n"
-		"add the .jc to the end of the file name.", "red"))
 		try:
 			with open(x + ".jc") as f:
 				code = f.read()
 				interpret(code)
 		except FileNotFoundError:
 			print(colored("Error: File not Found!", "red"))
+		finally:
+			print(colored("Your will now execute. "
+			"In the future, please\nadd the .jc "
+			"to the end of the file name.","cyan"))
+		
 
 def tokenize(code):
 	tokens = []
