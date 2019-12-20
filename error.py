@@ -1,12 +1,5 @@
-class MetaException(Exception):
-	def __init__(self, name):
-		self.name = name
-
-class SlurpCodeException(Exception):
-	def __init__(self, name):
-		self.name = name
-
-oof = {
-	"InvalidCmd": MetaException("Invalid Command!"),
-	"bruh": SlurpCodeException("Invalid syntax"),
-}
+class MetaException(Exception): pass
+class JuiceFileException(Exception): pass
+class SlurpException(Exception): pass
+class SlurpSyntaxError(SlurpException): pass
+class SlurpMathError(SlurpException): pass

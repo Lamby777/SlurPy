@@ -5,15 +5,14 @@
 
 # Imports
 from termcolor import colored
-from error import oof
-import fn, math
+import fn, error, math
 
 # Hoisted Functions
 
 def cmdHelp():
-	print("\n")
-	[print(i + "\n-> " + cmds[i][1] + "\n") for i in cmds]
-	print("\n")
+	print("\n" + "\n".join(
+		[i + "\n-> " + cmds[i][1] + "\n" for i in cmds]
+	))
 
 def runJuice(x="code.jc"):
 	try:
