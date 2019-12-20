@@ -38,6 +38,19 @@ def interpret(code):
 	for x in tokenize(code):
 		pass
 
+def startRepl():
+	while True:
+		print(">", end=" ")
+		cmdfull = input().lower().strip().split(" ")
+		cmd = cmdfull[0]
+		if not cmd in cmds:
+			fn.out("Error: Invalid Command! Use \"help\"", "red")
+		else:
+			cmdargs = " ".join(cmdfull[1:])
+			replFn = cmds[cmd][0]
+			if cmdargs: replFn(cmdargs)
+			else: replFn()
+
 # Constants
 ops = {
 	"ps": lambda x, y: x+y,
@@ -54,6 +67,7 @@ cmds = {
 	"echo": [lambda x: print(x), "Prints to terminal"],
 	"clear": [fn.cls, "Clears terminal"],
 	"script": [runJuice, "Runs file"],
+	"repl": [startRepl, "Opens the REPL"],
 }
 
 print(colored("Welcome to SlurpTerminal"))
