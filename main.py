@@ -8,6 +8,13 @@ from termcolor import colored
 from error import oof
 import fn, math
 
+# Hoisted Functions
+
+def cmdHelp():
+	print("\n")
+	[print(i + "\n-> " + cmds[i][1] + "\n") for i in cmds]
+	print("\n")
+
 # Constants
 ops = {
 	"ps": lambda x, y: x+y,
@@ -20,11 +27,7 @@ ops = {
 keywords = [i for i in ops]
 
 cmds = {
-	"help": [lambda: (
-		print("\n")
-		[print(i + "\n|> " + cmds[i][1]) for i in cmds]
-		print("\n")
-	), "Lists all commands"],
+	"help": [cmdHelp, "Lists all commands"],
 	"echo": [lambda x: print(x), "Prints to terminal"],
 	"clear": [fn.cls, "Clears terminal"],
 	"script": [fn.runJuice, "Runs file"],
@@ -39,4 +42,4 @@ while True:
 		fn.out("Invalid Command! Use \"help\"", "red")
 	else:
 		cmdargs = " ".join(cmdfull[1:])
-		cmds[cmd][0]()
+		cmds[cmd][0](cmdargs)
