@@ -12,4 +12,9 @@ def cls():
 		runTerminal('clear')
 
 def out(msg, color="white"):
-	print(colored(msg, color))
+	if isinstance(msg, list):
+		print("->" + msg.pop() + [
+			"\n^-" + line for line in msg
+		])
+	else:
+		print("-> " + colored(msg, color))
