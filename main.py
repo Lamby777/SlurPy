@@ -5,7 +5,15 @@
 
 # Imports
 from termcolor import colored
-import fn, error, math
+import fn, math
+
+# Errors
+
+class MetaException(Exception): pass
+class JuiceFileException(Exception): pass
+class SlurpException(Exception): pass
+class SlurpSyntaxError(SlurpException): pass
+class SlurpMathError(SlurpException): pass
 
 # Hoisted Functions
 
@@ -39,17 +47,14 @@ def interpret(code):
 		pass
 
 def startRepl():
-	while True:
+	loop = True
+	while loop:
 		print(">", end=" ")
-		cmdfull = input().lower().strip().split(" ")
-		cmd = cmdfull[0]
-		if not cmd in cmds:
-			fn.out("Error: Invalid Command! Use \"help\"", "red")
-		else:
-			cmdargs = " ".join(cmdfull[1:])
-			replFn = cmds[cmd][0]
-			if cmdargs: replFn(cmdargs)
-			else: replFn()
+		replJuice = input().lower().strip()
+		try:
+			interpret(replJuice)
+		except SlurpException as e:
+			print(colored(e, "red"))
 
 # Constants
 ops = {
