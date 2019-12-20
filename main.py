@@ -7,13 +7,24 @@
 from termcolor import colored
 import fn, math
 
-# Errors
+# Error Classes
 
 class MetaException(Exception): pass
 class JuiceFileException(Exception): pass
 class SlurpException(Exception): pass
 class SlurpSyntaxError(SlurpException): pass
 class SlurpMathError(SlurpException): pass
+
+# Constants
+
+ops = {
+	"ps": lambda x, y: x+y,
+	"sb": lambda x, y: x-y,
+	"mt": lambda x, y: x*y,
+	"dv": lambda x, y: x/y,
+	"pw": lambda x, y: x**y,
+	"sq": lambda x: math.sqrt(x),
+}
 
 # Hoisted Functions
 
@@ -42,6 +53,7 @@ def runJuice(x="code.jc"):
 
 def tokenize(code):
 	tokens = []
+
 	return tokens
 
 def interpret(code):
@@ -57,17 +69,6 @@ def startRepl():
 			interpret(replJuice)
 		except SlurpException as e:
 			print(colored(e, "red"))
-
-# Constants
-ops = {
-	"ps": lambda x, y: x+y,
-	"sb": lambda x, y: x-y,
-	"mt": lambda x, y: x*y,
-	"dv": lambda x, y: x/y,
-	"pw": lambda x, y: x**y,
-	"sq": lambda x: math.sqrt(x),
-}
-keywords = [i for i in ops]
 
 cmds = {
 	"help": [cmdHelp, "Lists all commands"],
