@@ -24,6 +24,7 @@ ops = {
 	"dv": lambda x, y: x/y,
 	"pw": lambda x, y: x**y,
 	"sq": lambda x: math.sqrt(x),
+	"log": lambda x: fn.out(x),
 }
 
 # Hoisted Functions
