@@ -15,6 +15,30 @@ def cmdHelp():
 	[print(i + "\n-> " + cmds[i][1] + "\n") for i in cmds]
 	print("\n")
 
+def runJuice(x="code.jc"):
+	try:
+		with open(x) as f:
+			code = f.read()
+			interpret(code)
+	except FileNotFoundError:
+		print(colored("Your will now execute. "
+		"In the future, please\n"
+		"add the .jc to the end of the file name.", "red"))
+		try:
+			with open(x + ".jc") as f:
+				code = f.read()
+				interpret(code)
+		except FileNotFoundError:
+			print(colored("Error: File not Found!", "red"))
+
+def tokenize(code):
+	tokens = []
+	return tokens
+
+def interpret(code):
+	for x in tokenize(code):
+		pass
+
 # Constants
 ops = {
 	"ps": lambda x, y: x+y,
@@ -30,7 +54,7 @@ cmds = {
 	"help": [cmdHelp, "Lists all commands"],
 	"echo": [lambda x: print(x), "Prints to terminal"],
 	"clear": [fn.cls, "Clears terminal"],
-	"script": [fn.runJuice, "Runs file"],
+	"script": [runJuice, "Runs file"],
 }
 
 print(colored("Welcome to SlurpTerminal"))
@@ -39,8 +63,9 @@ while True:
 	cmdfull = input().lower().strip().split(" ")
 	cmd = cmdfull[0]
 	if not cmd in cmds:
-		fn.out("Invalid Command! Use \"help\"", "red")
+		fn.out("Error: Invalid Command! Use \"help\"", "red")
 	else:
 		cmdargs = " ".join(cmdfull[1:])
-		cmds[cmd][0](cmdargs)
-#
+		replFn = cmds[cmd][0]
+		if cmdargs: replFn(cmdargs)
+		else: replFn()
