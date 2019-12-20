@@ -5,8 +5,7 @@
 
 # Imports
 from termcolor import colored
-from error import oof
-import fn, math
+import fn, error, math
 
 # Hoisted Functions
 
