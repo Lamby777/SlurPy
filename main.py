@@ -60,7 +60,7 @@ def tokenize(code):
 	split = code.splitlines()
 	# Removes Comments
 	for i in range(len(split)-1):
-		if comment in i:
+		if comment in split[i]:
 			if split[i][0:comtlen]: del split[i]
 			else: split[i] = split[i].find()
 	return tokens
@@ -93,7 +93,9 @@ while True:
 	cmdfull = input().lower().strip().split(" ")
 	cmd = cmdfull[0]
 	if not cmd in cmds:
-		fn.out("Error: Invalid Command! Use \"help\"", "red")
+		print(colored(
+			"Error: Invalid Command! Use \"help\" for a list",
+			"red"))
 	else:
 		cmdargs = " ".join(cmdfull[1:])
 		replFn = cmds[cmd][0]
