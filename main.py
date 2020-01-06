@@ -50,20 +50,25 @@ def runJuice(x="code.jc"):
 		except FileNotFoundError:
 			print(colored("Error: File not Found!", "red"))
 		finally:
-			print(colored("Your will now execute. "
+			print(colored("Code will now execute. "
 			"In the future, please\nadd the .jc "
 			"to the end of the file name.", "cyan"))
-		
+
+# Code Prep & Execution
 
 def tokenize(code):
-	tokens = []
 	split = code.splitlines()
-	# Removes Comments
+	# Removes Code Clutter
 	for i in range(len(split)-1):
-		if comment in split[i]:
-			if split[i][0:comtlen]: del split[i]
-			else: split[i] = split[i].find()
-	return tokens
+		spli = split[i]
+		# Empty Lines
+		if len(split[i]) == 0:
+			del split[i]
+		# Comments
+		elif comment in split[i]:
+			if spli[0:comtlen]: del split[i]
+			else: split[i] = spli[:spli.find(comment)]
+	return split
 
 def interpret(code):
 	for x in tokenize(code):
@@ -78,6 +83,9 @@ def startRepl():
 			interpret(replJuice)
 		except SlurpException as e:
 			print(colored(e, "red"))
+
+
+# SlurpTerminal commands
 
 cmds = {
 	"help": [cmdHelp, "Lists all commands"],
