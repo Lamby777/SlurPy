@@ -67,7 +67,6 @@ def tokenize(code):
 		elif comment in v:
 			if v[0:comtlen] == comment: del split[i]
 			else:
-				print(v.find(comment))
 				split[i] = v[:v.find(comment)]
 	return split
 
