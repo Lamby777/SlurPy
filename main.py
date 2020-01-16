@@ -44,15 +44,15 @@ def runJuice(x="code.jc"):
 			interpret(code)
 	except FileNotFoundError:
 		try:
+			print(colored("Code will now execute. "
+			"In the future, please\nadd the .jc "
+			"to the end of the file name.", "cyan"))
 			with open(x + ".jc") as f:
 				code = f.read()
 				interpret(code)
 		except FileNotFoundError:
 			print(colored("Error: File not Found!", "red"))
-		finally:
-			print(colored("Code will now execute. "
-			"In the future, please\nadd the .jc "
-			"to the end of the file name.", "cyan"))
+			
 
 # Code Prep & Execution
 
@@ -63,11 +63,17 @@ def tokenize(code):
 		# Empty Lines
 		if len(v) == 0:
 			del split[i]
+			continue
 		# Comments
 		elif comment in v:
-			if v[0:comtlen] == comment: del split[i]
+			if v[0:comtlen] == comment:
+				del split[i]
+				continue
 			else:
-				split[i] = v[:v.find(comment)]
+				v = v[:v.find(comment)]
+		v = v.strip()
+		split[i] = v
+	print(split)
 	return split
 
 def interpret(code):
