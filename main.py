@@ -60,19 +60,18 @@ def tokenize(code):
 	split = code.splitlines()
 	# Removes Code Clutter
 	for i,v in enumerate(split):
-		# Empty Lines
-		if len(v) == 0:
-			del split[i]
-			continue
 		# Comments
-		elif comment in v:
+		if comment in v:
 			if v[0:comtlen] == comment:
 				del split[i]
 				continue
 			else:
 				v = v[:v.find(comment)]
-		v = v.strip()
-		split[i] = v
+		# Empty Lines
+		if len(v) == 0:
+			del split[i]
+			continue
+		split[i] = v.strip()
 	print(split)
 	return split
 
