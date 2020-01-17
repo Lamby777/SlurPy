@@ -59,9 +59,7 @@ def runJuice(x="code.jc"):
 
 # Code Prep & Execution
 
-def tokenize(code):
-	split = code.splitlines()
-
+def cleanup(split):
 	# Removing Code Clutter
 	for i,v in enumerate(split):
 		# Comments
@@ -74,7 +72,10 @@ def tokenize(code):
 		split[i] = v.strip()
 
 	# Empty Lines
-	split = list(filter(None, split))
+	return list(filter(None, split))
+
+def tokenize(code):
+	split = cleanup(code.splitlines())
 	return split
 
 def interpret(code):
