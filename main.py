@@ -78,8 +78,8 @@ def tokenize(code):
 	return split
 
 def interpret(code):
-	for x in tokenize(code):
-		print(x)
+	for line in tokenize(code):
+		pass
 
 def startRepl():
 	loop = True
