@@ -61,12 +61,9 @@ def runJuice(x="code.jc"):
 
 def tokenize(code):
 	split = code.splitlines()
-	# Removes Code Clutter
+
+	# Removing Code Clutter
 	for i,v in enumerate(split):
-		# Empty Lines
-		if len(v) == 0:
-			del split[i]
-			continue
 		# Comments
 		if comment in v:
 			if v[0:comtlen] == comment:
@@ -75,7 +72,9 @@ def tokenize(code):
 			else:
 				v = v[:v.find(comment)]
 		split[i] = v.strip()
-	print(split)
+
+	# Empty Lines
+	split = list(filter(None, split))
 	return split
 
 def interpret(code):
