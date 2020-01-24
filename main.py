@@ -21,6 +21,7 @@ class SlurpMathError(SlurpException): pass
 # Constants
 
 comment = "(i)"
+terminator = "\n"
 comtlen = len(comment)-1
 
 ops = {
@@ -75,7 +76,9 @@ def cleanup(split):
 	return list(filter(None, split))
 
 def tokenize(code):
-	split = cleanup(code.splitlines())
+	split = cleanup(code.split(terminator))
+	ast = []
+	ast.push()
 	return split
 
 def interpret(code):
